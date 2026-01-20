@@ -4,18 +4,20 @@
 
 using value_type = int;
 
-class CArray{
+class CArray {
 private:
-    size_t       m_capacity = 0, m_last = 0;
-    value_type  *m_data = nullptr;
-public:
-    CArray(size_t size);
-    ~CArray();
+  size_t m_capacity = 0, m_last = 0;
+  value_type *m_data = nullptr;
 
-    void push_back(value_type value);
-    value_type& operator[](size_t index);
-    size_t  getSize() const;
-    void resize();
+public:
+  CArray(size_t size);
+  ~CArray();
+
+  void push_back(value_type value);
+  value_type &operator[](size_t index);
+  size_t getSize() const;
+  void resize();
+  void resize(size_t extra_capacity);
 };
 
 void DemoArray();
