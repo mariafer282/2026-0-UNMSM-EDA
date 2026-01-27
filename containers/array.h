@@ -26,11 +26,12 @@ class CArray {
     void resize(size_t delta = 10);
     void sort( CompareFunc pComp );
 
-    template <typename ObjFunc, typename ...Args>
-    void Foreach(ObjFunc of, Args... args){
-      for (auto i = 0; i < getSize(); ++i)
-          of(m_data[i], args...);
-    }
+    // template <typename ObjFunc, typename ...Args>
+    // void Foreach(ObjFunc of, Args... args){
+    //   for (auto i = 0; i < getSize(); ++i)
+    //       of(m_data[i], args...);
+    // }
+    void Foreach(void (*pf)(T &, T), T p1 );
 };
 
 template <typename T>
@@ -77,11 +78,11 @@ void CArray<T>::sort( CompareFunc pComp ){
     BurbujaRecursivo(m_data, m_last, pComp);
 }
 
-// template <typename T>
-// void CArray<T>::Foreach(void (*pf)(T &, T), T p1 ){
-//     for (auto i = 0; i < getSize(); ++i)
-//         pf(m_data[i], p1);
-// }
+template <typename T>
+void CArray<T>::Foreach(void (*pf)(T &, T), T p1 ){
+    for (auto i = 0; i < getSize(); ++i)
+        pf(m_data[i], p1);
+}
 
 template <typename T>
 ostream &operator<<(ostream &os, CArray<T> &arr) {
