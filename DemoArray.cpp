@@ -53,11 +53,11 @@ void DemoArray() {
     cout << "Antes del Foreach externo, getSize()=" << arr1.getSize() << endl;
     Foreach(arr1, &IncBasico<T1>);
     cout << arr1 << endl;
-    cout << "Terminó" << endl;
+    cout << "Terminó #1" << endl;
 
     ::Foreach(arr1, &Print<T1>);                      cout << endl;
     ::Foreach(arr1.begin(),  arr1.end(),  &Print<T1>);  cout << endl;
-    ::Foreach(arr1.rbegin(), arr1.rend(), &Print<T1>);  cout << endl;
+    // ::Foreach(arr1.rbegin(), arr1.rend(), &Print<T1>);  cout << endl;
 
     cout << "Terminó #2" << endl; 
 
