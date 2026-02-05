@@ -5,6 +5,7 @@
 #include "../util.h"
 using namespace std;
 
+// TODO: Traits para listas enlazadas
 template <typename T, typename _Func>
 struct ListTrait{
     using value_type = T;
@@ -20,6 +21,8 @@ template <typename T>
 struct DescendingTrait : 
     public ListTrait<T, std::less<T> >{
 };
+
+// Iterators para listas enlazadas
 
 template <typename Traits>
 class NodeLinkedList{
@@ -68,6 +71,12 @@ class CLinkedList {
     size_t m_nElements = 0;
 public:
     CLinkedList(){}
+    // TODO: Constructor copia
+    // TODO: Move Constructor
+    // TODO: Destructor seguro y virtual
+    // TODO: Concurrencia (mutex)
+    // TODO: Iterators begin() end()
+    // TODO: Operadores de acceso []
 
     void push_back(value_type &val, ref_type ref);
     void Insert(const value_type &val, ref_type ref);
@@ -75,6 +84,7 @@ public:
 private:
     void InternalInsert(Node *&rParent, const value_type &val, ref_type ref);
 
+    // TODO: Persistencia (write)
     friend ostream &operator<<(ostream &os, CLinkedList<Traits> &container){
         os << "CLinkedList: size = " << container.getSize() << endl;
         os << "[";
@@ -84,6 +94,7 @@ private:
         os << "]" << endl;
         return os;
     }
+    // TODO: Persistencia (read)
 };
 
 template <typename Traits>
@@ -97,6 +108,7 @@ void CLinkedList<Traits>::push_back(value_type &val, ref_type ref){
 
 template <typename Traits>
 void CLinkedList<Traits>::InternalInsert(Node *&rParent, const value_type &val, ref_type ref){
+    // TODO: Agregar algo para el caso de circular
     if( !rParent || rParent->m_data > val ){
         Node *pNew = new Node(val, ref, rParent);
         rParent = pNew;
